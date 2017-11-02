@@ -25,10 +25,10 @@
             </objects>
             <point key="canvasLocation" x="-346" y="90"/>
         </scene>
-        <!--View Controller-->
+        <!--Product List View Controller-->
         <scene sceneID="K7q-hj-A9f">
             <objects>
-                <viewController id="bvP-Kz-Yry" sceneMemberID="viewController">
+                <viewController id="bvP-Kz-Yry" customClass="ProductListViewController" customModule="ECommerceTask" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PyZ-PC-SOq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
