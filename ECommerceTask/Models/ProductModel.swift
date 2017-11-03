@@ -8,6 +8,8 @@
 
 import Unbox
 
+let kImageBaseUrl = "https://prod.atgcdn.ae/small_light(p=zoom,of=undefined)/pub/media/catalog/product"
+
 struct ProductModel {
     let productId: Int
     let name: String?
@@ -16,10 +18,13 @@ struct ProductModel {
 }
 
 extension ProductModel: Unboxable {
+    
     init(unboxer: Unboxer) throws {
         self.productId = try unboxer.unbox(key: "productId")
         self.name = unboxer.unbox(key: "name")
         self.description = unboxer.unbox(key: "description")
-        self.image = unboxer.unbox(key: "profile_picture")
+        
+        let imageUrl = kImageBaseUrl + (try unboxer.unbox(key: "image"))
+        self.image = URL.init(string: imageUrl)
     }
 }

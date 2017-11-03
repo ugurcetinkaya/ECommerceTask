@@ -19,6 +19,7 @@
 		D238CBA21FAB2C4300D7AA16 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D238CBA11FAB2C4300D7AA16 /* APIManager.swift */; };
 		D238CBA41FAB2F2300D7AA16 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D238CBA31FAB2F2300D7AA16 /* BaseViewModel.swift */; };
 		D238CBA61FAB2F3700D7AA16 /* ProductListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D238CBA51FAB2F3700D7AA16 /* ProductListViewModel.swift */; };
+		D23DACD41FAC7BE900AD4C74 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23DACD31FAC7BE900AD4C74 /* ProductTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		D238CBA11FAB2C4300D7AA16 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		D238CBA31FAB2F2300D7AA16 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		D238CBA51FAB2F3700D7AA16 /* ProductListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewModel.swift; sourceTree = "<group>"; };
+		D23DACD31FAC7BE900AD4C74 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				D238CB9B1FAB194A00D7AA16 /* BaseViewController.swift */,
-				D238CB9D1FAB196E00D7AA16 /* ProductListViewController.swift */,
+				D23DACD21FAB50EB00AD4C74 /* ProductList */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -156,6 +158,15 @@
 				D238CBA11FAB2C4300D7AA16 /* APIManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		D23DACD21FAB50EB00AD4C74 /* ProductList */ = {
+			isa = PBXGroup;
+			children = (
+				D238CB9D1FAB196E00D7AA16 /* ProductListViewController.swift */,
+				D23DACD31FAC7BE900AD4C74 /* ProductTableViewCell.swift */,
+			);
+			path = ProductList;
 			sourceTree = "<group>";
 		};
 		EEB3F387A05DFD8C936C54A3 /* Pods */ = {
@@ -342,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D238CB781FAB12D000D7AA16 /* AppDelegate.swift in Sources */,
+				D23DACD41FAC7BE900AD4C74 /* ProductTableViewCell.swift in Sources */,
 				D238CB9E1FAB196E00D7AA16 /* ProductListViewController.swift in Sources */,
 				D238CBA21FAB2C4300D7AA16 /* APIManager.swift in Sources */,
 				D238CBA61FAB2F3700D7AA16 /* ProductListViewModel.swift in Sources */,
