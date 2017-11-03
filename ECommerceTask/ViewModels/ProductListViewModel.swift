@@ -11,18 +11,22 @@ import Unbox
 
 final class ProductListViewModel: BaseViewModel {
 
+    let kSearchString = "boy"
+    let kHitsPerPage = 10
+    
     var productList: [ProductModel]
     var pageIndex: Int
+    var shouldShowLoadingCell = false
     
     override init() {
         productList = [ProductModel]()
         pageIndex = 0
     }
     
-    func getProductList() -> SignalProducer<Any, NSError> {
-        let parameter = ["searchString" : "boy",
+    func getProductList(isRefreshing: Bool) -> SignalProducer<Any, NSError> {
+        let parameter = ["searchString" : kSearchString,
                          "page" : pageIndex,
-                         "hitsPerPage" : 10
+                         "hitsPerPage" : kHitsPerPage
                          ] as [String : AnyObject]
         
         return SignalProducer { [weak self] observer, disposable in
@@ -32,7 +36,16 @@ final class ProductListViewModel: BaseViewModel {
                     case .value(let json):
                         let dictionary = json as! UnboxableDictionary
                         
-                        self?.productList.append(contentsOf: try! unbox(dictionary: dictionary, atKey: "hits"))
+                        if isRefreshing {
+                            self?.pageIndex = 0
+                            self?.productList = try! unbox(dictionary: dictionary, atKey: "hits")
+                        }
+                        else {
+                            self?.productList.append(contentsOf: try! unbox(dictionary: dictionary, atKey: "hits"))
+                        }
+                        
+                        let pagination = dictionary["pagination"] as! [String : Int]
+                        self?.shouldShowLoadingCell = (self?.pageIndex)! < (Int)(pagination["totalPages"]!)
                         
                         observer.send(value: json)
                         observer.sendCompleted()

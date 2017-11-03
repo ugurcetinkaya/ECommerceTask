@@ -10,30 +10,46 @@ import UIKit
 
 final class ProductListViewController: BaseViewController {
     
-    let viewModel = ProductListViewModel()
+    fileprivate let viewModel = ProductListViewModel()
     
     @IBOutlet weak var tableView: UITableView!
+    var refreshControl: UIRefreshControl!
     
-    let kCellIdentifier = "ProductTableViewCell"
+    let kProductCellIdentifier = "ProductTableViewCell"
+    let kPagingCellIdentifier = "PagingTableViewCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.tableFooterView = UIView()
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refreshProductList), for: .valueChanged)
         
+        tableView.tableFooterView = UIView()
+        tableView.refreshControl = refreshControl
+        
+        refreshControl?.beginRefreshing()
         self.fetchProfileList()
     }
 
-    func fetchProfileList() {
-//        UIManager.showHUD()
-        viewModel.getProductList()
+    private func fetchProfileList(refresh: Bool = false) {
+        viewModel.getProductList(isRefreshing: refresh)
             .on(failed: { (error) in
-//                UIManager.dismissHUD()
             },completed: {
-//                UIManager.dismissHUD()
+                self.refreshControl?.endRefreshing()
                 self.tableView.reloadData()
             })
             .start()
+    }
+    
+    fileprivate func fetchNextPage() {
+        viewModel.pageIndex += 1
+        fetchProfileList()
+    }
+    
+    @objc
+    private func refreshProductList() {
+        viewModel.pageIndex = 0
+        fetchProfileList(refresh: true)
     }
 }
 
@@ -41,16 +57,31 @@ final class ProductListViewController: BaseViewController {
 extension ProductListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.productList.count
+        let count = viewModel.productList.count
+        return viewModel.shouldShowLoadingCell ?  count + 1 : count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let product: ProductModel = viewModel.productList[indexPath.row]
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: kCellIdentifier, for: indexPath) as! ProductTableViewCell
-        cell.selectionStyle = .none
-        cell.setProductCell(with: product)
-        
-        return cell
+        if isLoadingIndexPath(indexPath) {
+            return PagingTableViewCell(style: .default, reuseIdentifier: kPagingCellIdentifier)
+        } else {
+            let product: ProductModel = viewModel.productList[indexPath.row]
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: kProductCellIdentifier, for: indexPath) as! ProductTableViewCell
+            cell.selectionStyle = .none
+            cell.setProductCell(with: product)
+            
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard isLoadingIndexPath(indexPath) else { return }
+        fetchNextPage()
+    }
+    
+    private func isLoadingIndexPath(_ indexPath: IndexPath) -> Bool {
+        guard viewModel.shouldShowLoadingCell else { return false }
+        return indexPath.row == viewModel.productList.count
     }
 }
