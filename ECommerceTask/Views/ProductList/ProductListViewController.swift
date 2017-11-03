@@ -22,19 +22,21 @@ final class ProductListViewController: BaseViewController {
         super.viewDidLoad()
 
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(refreshProductList), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshProductList), for: .valueChanged)
         
         tableView.tableFooterView = UIView()
         tableView.refreshControl = refreshControl
         
-        refreshControl?.beginRefreshing()
+        UIManager.showHUD()
         self.fetchProfileList()
     }
 
     private func fetchProfileList(refresh: Bool = false) {
         viewModel.getProductList(isRefreshing: refresh)
             .on(failed: { (error) in
+                UIManager.dismissHUD()
             },completed: {
+                UIManager.dismissHUD()
                 self.refreshControl?.endRefreshing()
                 self.tableView.reloadData()
             })
