@@ -12,13 +12,15 @@ import Kingfisher
 class ProductTableViewCell: UITableViewCell {
 
     @IBOutlet weak var productImage: UIImageView!
-    @IBOutlet weak var productName: UILabel!
-    @IBOutlet weak var productDescription: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
 
     func setProductCell(with product:ProductModel) {
         productImage.kf.setImage(with: product.image)
-        productName.text = product.name
-        productDescription.attributedText = stringFromHtml(string: product.description!)
+        nameLabel.text = product.name
+        descriptionLabel.attributedText = stringFromHtml(string: product.description!)
+        priceLabel.text = "\(String(describing: product.price!)) AED"
     }
 
     private func stringFromHtml(string: String) -> NSAttributedString? {
@@ -31,7 +33,9 @@ class ProductTableViewCell: UITableViewCell {
                 paragraphStyle.lineBreakMode = .byTruncatingTail
                 
                 let range = NSRange(location: 0, length: attributedString.string.characters.count)
-                attributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: range)
+                attributedString.addAttributes([NSParagraphStyleAttributeName : paragraphStyle,
+                                                NSFontAttributeName : UIFont.font(weight: UIFontWeightLight, size: 12)],
+                                                range: range)
                 
                 return attributedString
             }

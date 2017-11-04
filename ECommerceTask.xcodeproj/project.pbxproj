@@ -22,6 +22,7 @@
 		D23DACD41FAC7BE900AD4C74 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23DACD31FAC7BE900AD4C74 /* ProductTableViewCell.swift */; };
 		D23DACD61FACA2F900AD4C74 /* PagingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23DACD51FACA2F900AD4C74 /* PagingTableViewCell.swift */; };
 		D29AFC681FACB6990028FB80 /* UIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29AFC671FACB6990028FB80 /* UIManager.swift */; };
+		D29AFC6A1FACB8260028FB80 /* StyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29AFC691FACB8260028FB80 /* StyleManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		D23DACD31FAC7BE900AD4C74 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		D23DACD51FACA2F900AD4C74 /* PagingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingTableViewCell.swift; sourceTree = "<group>"; };
 		D29AFC671FACB6990028FB80 /* UIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIManager.swift; sourceTree = "<group>"; };
+		D29AFC691FACB8260028FB80 /* StyleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			children = (
 				D238CBA11FAB2C4300D7AA16 /* APIManager.swift */,
 				D29AFC671FACB6990028FB80 /* UIManager.swift */,
+				D29AFC691FACB8260028FB80 /* StyleManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				D29AFC681FACB6990028FB80 /* UIManager.swift in Sources */,
 				D23DACD61FACA2F900AD4C74 /* PagingTableViewCell.swift in Sources */,
 				D238CB9C1FAB194A00D7AA16 /* BaseViewController.swift in Sources */,
+				D29AFC6A1FACB8260028FB80 /* StyleManager.swift in Sources */,
 				D238CBA01FAB285900D7AA16 /* ProductModel.swift in Sources */,
 				D238CBA41FAB2F2300D7AA16 /* BaseViewModel.swift in Sources */,
 			);

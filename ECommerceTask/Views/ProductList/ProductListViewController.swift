@@ -20,6 +20,8 @@ final class ProductListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Boy Clothes"
 
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshProductList), for: .valueChanged)

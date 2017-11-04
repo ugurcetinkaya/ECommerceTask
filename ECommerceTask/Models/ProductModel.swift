@@ -14,6 +14,7 @@ struct ProductModel {
     let productId: Int
     let name: String?
     let description: String?
+    let price: Float?
     let image: URL?
 }
 
@@ -23,6 +24,7 @@ extension ProductModel: Unboxable {
         self.productId = try unboxer.unbox(key: "productId")
         self.name = unboxer.unbox(key: "name")
         self.description = unboxer.unbox(key: "description")
+        self.price = unboxer.unbox(key: "price")
         
         let imageUrl = kImageBaseUrl + (try unboxer.unbox(key: "image"))
         self.image = URL.init(string: imageUrl)
