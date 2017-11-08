@@ -38,12 +38,15 @@ enum APIManager: URLRequestConvertible {
     }
     
     case productList([String: AnyObject])
+    case productDetail([String: AnyObject])
     
     var route: (path: String, parameters: [String: AnyObject]?) {
         
         switch self {
         case .productList(let parameters):
             return ("search/full", parameters)
+        case .productDetail(let parameters):
+            return ("product/findbyslug", parameters)
         }
     }
     
@@ -51,6 +54,8 @@ enum APIManager: URLRequestConvertible {
         switch self {
         case .productList:
             return .post
+        case .productDetail:
+            return .get
         }
         
     }

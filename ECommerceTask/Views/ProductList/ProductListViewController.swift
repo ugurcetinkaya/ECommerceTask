@@ -17,6 +17,7 @@ final class ProductListViewController: BaseViewController {
     
     let kProductCellIdentifier = "ProductTableViewCell"
     let kPagingCellIdentifier = "PagingTableViewCell"
+    let kPrductDetailSegue = "productDetailSegue"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +78,10 @@ extension ProductListViewController: UITableViewDelegate, UITableViewDataSource 
             
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: kPrductDetailSegue, sender: indexPath)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

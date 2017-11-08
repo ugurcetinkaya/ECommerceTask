@@ -18,6 +18,9 @@ target 'ECommerceTask' do
     
     #ui-helpers
     pod 'KRProgressHUD', '3.0.0'
-    pod 'SwiftHEXColors', '1.0.0'
+    pod 'SwiftHEXColors', '1.1.0'
+    pod 'Agrume', '3.2.3'
+    pod 'Stepperier', '~> 1.1.0'
+    pod 'IQKeyboardManagerSwift', '4.0.13'
     
 end

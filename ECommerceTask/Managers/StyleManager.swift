@@ -18,6 +18,10 @@ extension UIColor {
     @nonobjc class var navigationBarTitle: UIColor {
         return UIColor(hexString: "FCFCFC")!
     }
+    
+    @nonobjc class var purple: UIColor {
+        return UIColor(hexString: "7C58B1")!
+    }
 
 }
 

@@ -23,6 +23,10 @@
 		D23DACD61FACA2F900AD4C74 /* PagingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23DACD51FACA2F900AD4C74 /* PagingTableViewCell.swift */; };
 		D29AFC681FACB6990028FB80 /* UIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29AFC671FACB6990028FB80 /* UIManager.swift */; };
 		D29AFC6A1FACB8260028FB80 /* StyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29AFC691FACB8260028FB80 /* StyleManager.swift */; };
+		D29AFC6D1FAE0E320028FB80 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29AFC6C1FAE0E320028FB80 /* ProductDetailViewController.swift */; };
+		D2E503F21FB209B8007F02A2 /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E503F11FB209B8007F02A2 /* ProductDetailViewModel.swift */; };
+		D2E641BC1FB320D1005C5609 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E641BB1FB320D1005C5609 /* DataManager.swift */; };
+		D2E641BE1FB33627005C5609 /* ProductSizeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E641BD1FB33627005C5609 /* ProductSizeModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +62,10 @@
 		D23DACD51FACA2F900AD4C74 /* PagingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingTableViewCell.swift; sourceTree = "<group>"; };
 		D29AFC671FACB6990028FB80 /* UIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIManager.swift; sourceTree = "<group>"; };
 		D29AFC691FACB8260028FB80 /* StyleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleManager.swift; sourceTree = "<group>"; };
+		D29AFC6C1FAE0E320028FB80 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
+		D2E503F11FB209B8007F02A2 /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
+		D2E641BB1FB320D1005C5609 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		D2E641BD1FB33627005C5609 /* ProductSizeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSizeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +145,7 @@
 			children = (
 				D238CB9B1FAB194A00D7AA16 /* BaseViewController.swift */,
 				D23DACD21FAB50EB00AD4C74 /* ProductList */,
+				D29AFC6B1FAE0E0B0028FB80 /* ProductDetail */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -145,7 +154,8 @@
 			isa = PBXGroup;
 			children = (
 				D238CBA31FAB2F2300D7AA16 /* BaseViewModel.swift */,
-				D238CBA51FAB2F3700D7AA16 /* ProductListViewModel.swift */,
+				D2E503EF1FB20988007F02A2 /* ProductList */,
+				D2E503F01FB20997007F02A2 /* ProductDetail */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -154,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				D238CB9F1FAB285900D7AA16 /* ProductModel.swift */,
+				D2E641BD1FB33627005C5609 /* ProductSizeModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -164,6 +175,7 @@
 				D238CBA11FAB2C4300D7AA16 /* APIManager.swift */,
 				D29AFC671FACB6990028FB80 /* UIManager.swift */,
 				D29AFC691FACB8260028FB80 /* StyleManager.swift */,
+				D2E641BB1FB320D1005C5609 /* DataManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -176,6 +188,30 @@
 				D23DACD51FACA2F900AD4C74 /* PagingTableViewCell.swift */,
 			);
 			path = ProductList;
+			sourceTree = "<group>";
+		};
+		D29AFC6B1FAE0E0B0028FB80 /* ProductDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D29AFC6C1FAE0E320028FB80 /* ProductDetailViewController.swift */,
+			);
+			path = ProductDetail;
+			sourceTree = "<group>";
+		};
+		D2E503EF1FB20988007F02A2 /* ProductList */ = {
+			isa = PBXGroup;
+			children = (
+				D238CBA51FAB2F3700D7AA16 /* ProductListViewModel.swift */,
+			);
+			path = ProductList;
+			sourceTree = "<group>";
+		};
+		D2E503F01FB20997007F02A2 /* ProductDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D2E503F11FB209B8007F02A2 /* ProductDetailViewModel.swift */,
+			);
+			path = ProductDetail;
 			sourceTree = "<group>";
 		};
 		EEB3F387A05DFD8C936C54A3 /* Pods */ = {
@@ -314,23 +350,29 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ECommerceTask/Pods-ECommerceTask-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Agrume/Agrume.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/KRActivityIndicatorView/KRActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/KRProgressHUD/KRProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/Stepperier/Stepperier.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftHEXColors/SwiftHEXColors.framework",
 				"${BUILT_PRODUCTS_DIR}/Unbox/Unbox.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Agrume.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KRActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KRProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stepperier.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHEXColors.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Unbox.framework",
 			);
@@ -364,10 +406,14 @@
 				D238CB781FAB12D000D7AA16 /* AppDelegate.swift in Sources */,
 				D23DACD41FAC7BE900AD4C74 /* ProductTableViewCell.swift in Sources */,
 				D238CB9E1FAB196E00D7AA16 /* ProductListViewController.swift in Sources */,
+				D2E641BC1FB320D1005C5609 /* DataManager.swift in Sources */,
 				D238CBA21FAB2C4300D7AA16 /* APIManager.swift in Sources */,
+				D2E641BE1FB33627005C5609 /* ProductSizeModel.swift in Sources */,
 				D238CBA61FAB2F3700D7AA16 /* ProductListViewModel.swift in Sources */,
+				D29AFC6D1FAE0E320028FB80 /* ProductDetailViewController.swift in Sources */,
 				D29AFC681FACB6990028FB80 /* UIManager.swift in Sources */,
 				D23DACD61FACA2F900AD4C74 /* PagingTableViewCell.swift in Sources */,
+				D2E503F21FB209B8007F02A2 /* ProductDetailViewModel.swift in Sources */,
 				D238CB9C1FAB194A00D7AA16 /* BaseViewController.swift in Sources */,
 				D29AFC6A1FACB8260028FB80 /* StyleManager.swift in Sources */,
 				D238CBA01FAB285900D7AA16 /* ProductModel.swift in Sources */,

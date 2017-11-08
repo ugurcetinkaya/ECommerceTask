@@ -16,6 +16,7 @@ struct ProductModel {
     let description: String?
     let price: Float?
     let image: URL?
+    let sizes: [ProductSizeModel]?
 }
 
 extension ProductModel: Unboxable {
@@ -28,5 +29,17 @@ extension ProductModel: Unboxable {
         
         let imageUrl = kImageBaseUrl + (try unboxer.unbox(key: "image"))
         self.image = URL.init(string: imageUrl)
+        
+        self.sizes = unboxer.unbox(keyPath: "configurableAttributes.0.options")
+        
+        if let sizes = self.sizes {
+            for i in 0 ..< sizes.count {
+                do {
+                    self.sizes![i].quantity = try unboxer.unbox(keyPath: "relatedProductsLookup.\(self.sizes![i].simpleProductSkus).stock.maxAvailableQty")
+                } catch {
+                    
+                }
+            }
+        }
     }
 }
