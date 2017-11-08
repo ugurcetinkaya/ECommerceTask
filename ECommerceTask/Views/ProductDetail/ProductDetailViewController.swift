@@ -83,6 +83,16 @@ final class ProductDetailViewController: BaseViewController {
         let agruma = Agrume(image: productImage.image!, backgroundBlurStyle: .extraLight)
         agruma.showFrom(self)
     }
+    
+    @IBAction
+    private func actionAddToCart() {
+        if stepperier.value != 0 {
+            let alert = UIAlertController(title: "", message: "Products were added to your cart.", preferredStyle: .alert)
+            let doneAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alert.addAction(doneAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
 
 }
 
@@ -103,8 +113,10 @@ extension ProductDetailViewController : UIPickerViewDelegate, UIPickerViewDataSo
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let size: ProductSizeModel = viewModel.productDetail.sizes![row]
-        sizeField.text = size.label
+        
         viewModel.selectedSize = size
+        
+        sizeField.text = size.label
         stepperier.maximumValue = size.quantity
         stepperier.value = 0
     }
