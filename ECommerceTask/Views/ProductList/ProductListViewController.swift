@@ -27,6 +27,7 @@ final class ProductListViewController: BaseViewController {
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshProductList), for: .valueChanged)
         
+        tableView.register(UINib(nibName:"ProdcutTableViewCell",bundle:nil), forCellReuseIdentifier: kProductCellIdentifier)
         tableView.tableFooterView = UIView()
         tableView.refreshControl = refreshControl
         
