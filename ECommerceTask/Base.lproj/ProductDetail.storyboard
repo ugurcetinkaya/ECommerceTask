@@ -5,8 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -83,39 +81,11 @@
                                     <constraint firstItem="KFh-ku-Wvc" firstAttribute="top" secondItem="4R0-ug-DeH" secondAttribute="bottom" constant="24" id="ygR-Ri-9NK"/>
                                 </constraints>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FHF-Zh-bmn">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FHF-Zh-bmn" customClass="AddToBagView" customModule="ECommerceTask" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="607" width="375" height="60"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmA-0X-F8P">
-                                        <rect key="frame" x="15" y="8" width="163" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="rYX-hE-m1W"/>
-                                        </constraints>
-                                    </view>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oem-gD-KRh">
-                                        <rect key="frame" x="197" y="8" width="163" height="44"/>
-                                        <color key="backgroundColor" red="0.40784313729999999" green="0.25490196079999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="iPb-1H-4ks"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="14"/>
-                                        <state key="normal" title="ADD TO BAG">
-                                            <color key="titleColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="actionAddToCart" destination="4dA-Nj-PQJ" eventType="touchUpInside" id="PJ3-I2-Pdt"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="hmA-0X-F8P" firstAttribute="centerY" secondItem="FHF-Zh-bmn" secondAttribute="centerY" id="Bar-H8-G6B"/>
                                     <constraint firstAttribute="height" constant="60" id="CyH-96-Bsa"/>
-                                    <constraint firstItem="Oem-gD-KRh" firstAttribute="centerY" secondItem="FHF-Zh-bmn" secondAttribute="centerY" id="DnD-kC-FT0"/>
-                                    <constraint firstItem="Oem-gD-KRh" firstAttribute="leading" secondItem="FHF-Zh-bmn" secondAttribute="centerX" constant="10" id="IGx-JF-iFY"/>
-                                    <constraint firstAttribute="trailing" secondItem="Oem-gD-KRh" secondAttribute="trailing" constant="15" id="Py9-nT-0dJ"/>
-                                    <constraint firstItem="hmA-0X-F8P" firstAttribute="leading" secondItem="FHF-Zh-bmn" secondAttribute="leading" constant="15" id="kp0-gh-iR4"/>
-                                    <constraint firstAttribute="trailing" secondItem="hmA-0X-F8P" secondAttribute="trailing" multiplier="2" constant="19" id="s28-eP-Bz1"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -139,12 +109,11 @@
                         <viewLayoutGuide key="safeArea" id="Ym7-pX-GWV"/>
                     </view>
                     <connections>
-                        <outlet property="addToCartButton" destination="Oem-gD-KRh" id="Z22-lL-WOm"/>
+                        <outlet property="addToBagView" destination="FHF-Zh-bmn" id="2ka-UJ-tnS"/>
                         <outlet property="descriptionLabel" destination="VSY-Ub-WxN" id="4lM-C1-WJJ"/>
                         <outlet property="pricaLabel" destination="KFh-ku-Wvc" id="rNH-hQ-6am"/>
                         <outlet property="productImage" destination="4R0-ug-DeH" id="hGz-gW-jql"/>
                         <outlet property="sizeField" destination="lbG-su-XFl" id="454-2h-Ei2"/>
-                        <outlet property="stepperView" destination="hmA-0X-F8P" id="w9j-Ut-dNT"/>
                         <outlet property="titleLabel" destination="Dzv-zR-Nta" id="Z7Y-Bl-byr"/>
                     </connections>
                 </viewController>

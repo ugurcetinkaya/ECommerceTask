@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddToBagView" customModule="ECommerceTask" customModuleProvider="target">
+            <connections>
+                <outlet property="addToCartButton" destination="pKu-mo-Zxe" id="xMh-VW-R1P"/>
+                <outlet property="contentView" destination="M2K-jz-7DV" id="cW2-X2-J7q"/>
+                <outlet property="stepperView" destination="kvX-tL-To7" id="O5c-BP-T0z"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M2K-jz-7DV">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kvX-tL-To7">
+                    <rect key="frame" x="15" y="8" width="163" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="M8d-Ot-Uh7"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pKu-mo-Zxe">
+                    <rect key="frame" x="197" y="8" width="163" height="44"/>
+                    <color key="backgroundColor" red="0.40784313729999999" green="0.25490196079999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="e9w-CK-Ej1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="14"/>
+                    <state key="normal" title="ADD TO BAG">
+                        <color key="titleColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="pKu-mo-Zxe" firstAttribute="centerY" secondItem="M2K-jz-7DV" secondAttribute="centerY" id="2iF-Kk-IRZ"/>
+                <constraint firstItem="pKu-mo-Zxe" firstAttribute="leading" secondItem="M2K-jz-7DV" secondAttribute="centerX" constant="10" id="4f8-dR-dFH"/>
+                <constraint firstAttribute="trailing" secondItem="kvX-tL-To7" secondAttribute="trailing" multiplier="2" constant="19" id="CeJ-gS-phe"/>
+                <constraint firstItem="kvX-tL-To7" firstAttribute="leading" secondItem="M2K-jz-7DV" secondAttribute="leading" constant="15" id="JVp-Mf-ZvD"/>
+                <constraint firstAttribute="trailing" secondItem="pKu-mo-Zxe" secondAttribute="trailing" constant="15" id="Li2-17-UA2"/>
+                <constraint firstItem="kvX-tL-To7" firstAttribute="centerY" secondItem="M2K-jz-7DV" secondAttribute="centerY" id="wPC-8H-dOJ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>

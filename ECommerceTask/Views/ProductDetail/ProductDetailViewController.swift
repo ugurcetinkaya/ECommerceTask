@@ -10,28 +10,22 @@ import UIKit
 
 import Kingfisher
 import Agrume
-import Stepperier
 
 final class ProductDetailViewController: BaseViewController {
 
     fileprivate let viewModel = ProductDetailViewModel()
-    
-    @IBOutlet weak var addToCartButton: UIButton!
+
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var pricaLabel: UILabel!
     @IBOutlet weak var sizeField: UITextField!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var stepperView: UIView!
+    @IBOutlet weak var addToBagView: AddToBagView!
     
     var sizePicker: UIPickerView!
     
-    lazy var stepperier = Stepperier()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        addToCartButton.layer.cornerRadius = 22
         
         let imageTapGesture = UITapGestureRecognizer(target: self, action: #selector(actionImageTap))
         productImage.addGestureRecognizer(imageTapGesture)
@@ -41,14 +35,7 @@ final class ProductDetailViewController: BaseViewController {
         sizePicker.dataSource = self
         sizeField.inputView = sizePicker
         
-        stepperier.backgroundColor = UIColor.purple
-        stepperView.addSubview(stepperier)
-        // Setup layout constraints
-        stepperier.translatesAutoresizingMaskIntoConstraints = false
-        stepperier.centerXAnchor.constraint(equalTo: stepperView.centerXAnchor).isActive = true
-        stepperier.centerYAnchor.constraint(equalTo: stepperView.centerYAnchor).isActive = true
-        stepperier.heightAnchor.constraint(equalTo: stepperView.heightAnchor).isActive = true
-        stepperier.widthAnchor.constraint(equalTo: stepperView.widthAnchor).isActive = true
+        addToBagView.delegate = self
         
         self.fetchProductDetail()
     }
@@ -83,17 +70,6 @@ final class ProductDetailViewController: BaseViewController {
         let agruma = Agrume(image: productImage.image!, backgroundBlurStyle: .extraLight)
         agruma.showFrom(self)
     }
-    
-    @IBAction
-    private func actionAddToCart() {
-        if stepperier.value != 0 {
-            let alert = UIAlertController(title: "", message: "Products were added to your cart.", preferredStyle: .alert)
-            let doneAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alert.addAction(doneAction)
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-
 }
 
 extension ProductDetailViewController : UIPickerViewDelegate, UIPickerViewDataSource {
@@ -117,7 +93,18 @@ extension ProductDetailViewController : UIPickerViewDelegate, UIPickerViewDataSo
         viewModel.selectedSize = size
         
         sizeField.text = size.label
-        stepperier.maximumValue = size.quantity
-        stepperier.value = 0
+        addToBagView.stepperier.maximumValue = size.quantity
+        addToBagView.stepperier.value = 0
+    }
+}
+
+extension ProductDetailViewController: AddToBagViewDelegate {
+    func actionAddToCart() {
+        if addToBagView.stepperier.value != 0 {
+            let alert = UIAlertController(title: "", message: "Products were added to your cart.", preferredStyle: .alert)
+            let doneAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alert.addAction(doneAction)
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
