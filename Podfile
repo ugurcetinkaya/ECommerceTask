@@ -23,4 +23,9 @@ target 'ECommerceTask' do
     pod 'Stepperier', '~> 1.1.0'
     pod 'IQKeyboardManagerSwift', '4.0.13'
     
+    target 'ECommerceTaskTests' do
+        inherit! :search_paths
+        pod 'Unbox', '2.5.0'
+    end
+    
 end
