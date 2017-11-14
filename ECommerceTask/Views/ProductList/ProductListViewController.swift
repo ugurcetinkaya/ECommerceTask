@@ -72,10 +72,11 @@ extension ProductListViewController: UITableViewDelegate, UITableViewDataSource 
             return PagingTableViewCell(style: .default, reuseIdentifier: kPagingCellIdentifier)
         } else {
             let product: ProductModel = viewModel.productList[indexPath.row]
+            let descriptionAsAttrStr: NSAttributedString = viewModel.descriptionAttrStings[indexPath.row]
             
             let cell = tableView.dequeueReusableCell(withIdentifier: kProductCellIdentifier, for: indexPath) as! ProductTableViewCell
             cell.selectionStyle = .none
-            cell.setProductCell(with: product)
+            cell.setProductCell(with: product, description: descriptionAsAttrStr)
             
             return cell
         }

@@ -16,10 +16,10 @@ class ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
 
-    func setProductCell(with product:ProductModel) {
+    func setProductCell(with product:ProductModel, description: NSAttributedString) {
         productImage.kf.setImage(with: product.image)
         nameLabel.text = product.name
-        descriptionLabel.attributedText = DataManager.stringFromHtml(string: product.description!)
+        descriptionLabel.attributedText = description
         priceLabel.text = "\(String(describing: product.price!)) AED"
     }
     

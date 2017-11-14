@@ -19,7 +19,7 @@ struct DataManager {
                 let paragraphStyle = NSMutableParagraphStyle()
                 paragraphStyle.lineBreakMode = .byTruncatingTail
                 
-                let range = NSRange(location: 0, length: attributedString.string.characters.count)
+                let range = NSRange(location: 0, length: attributedString.string.count)
                 attributedString.addAttributes([NSParagraphStyleAttributeName : paragraphStyle,
                                                 NSFontAttributeName : UIFont.font(weight: UIFontWeightLight, size: 12)],
                                                range: range)

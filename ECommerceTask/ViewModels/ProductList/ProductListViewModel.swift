@@ -15,11 +15,13 @@ final class ProductListViewModel: BaseViewModel {
     let kHitsPerPage = 10
     
     var productList: [ProductModel]
+    var descriptionAttrStings: [NSAttributedString]
     var pageIndex: Int
     var shouldShowLoadingCell = false
     
     override init() {
         productList = [ProductModel]()
+        descriptionAttrStings = [NSAttributedString]()
         pageIndex = 0
     }
     
@@ -36,13 +38,19 @@ final class ProductListViewModel: BaseViewModel {
                     case .value(let json):
                         let dictionary = json as! UnboxableDictionary
                         
+                        let products: [ProductModel] = try! unbox(dictionary: dictionary, atKey: "hits")
+                        
                         if isRefreshing {
                             self?.pageIndex = 0
-                            self?.productList = try! unbox(dictionary: dictionary, atKey: "hits")
+                            self?.productList = products
+                            
+                            self?.descriptionAttrStings.removeAll()
                         }
                         else {
-                            self?.productList.append(contentsOf: try! unbox(dictionary: dictionary, atKey: "hits"))
+                            self?.productList.append(contentsOf: products)
                         }
+                        
+                        self?.setDescriptionAttrStings(wtih: products)
                         
                         let pagination = dictionary["pagination"] as! [String : Int]
                         self?.shouldShowLoadingCell = (self?.pageIndex)! < (Int)(pagination["totalPages"]!)
@@ -60,4 +68,9 @@ final class ProductListViewModel: BaseViewModel {
         }
     }
     
+    func setDescriptionAttrStings(wtih products: [ProductModel]) {
+        for product in products {
+            self.descriptionAttrStings.append((DataManager.stringFromHtml(string: product.description!))!)
+        }
+    }
 }
